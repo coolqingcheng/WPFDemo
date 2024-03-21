@@ -6,22 +6,20 @@
         xmlns:local="clr-namespace:WPFDemo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightGray"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <WrapPanel Orientation="Horizontal" Margin="10" Background="#ccc">
-            <Button Content="Hover Me" Width="100" Height="50">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="LightGray"/>
-                        <Setter Property="Foreground" Value="Black"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightBlue"/>
-                                <Setter Property="Foreground" Value="White"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
+
+            <TextBlock Width="120" Background="#ddd" Height="50" Text="{Binding  ElementName=MainWindow, Path=Counter}"></TextBlock>
         </WrapPanel>
     </Grid>
 </Window>

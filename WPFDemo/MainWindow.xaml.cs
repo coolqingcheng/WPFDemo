@@ -25,8 +25,21 @@ namespace WPFDemo
         public MainWindow()
         {
             InitializeComponent();
+            this.FontSize = 35;
+            SetValue(counterKey, "hello");
         }
-        
-        
+        //属性包装器，只提供GetValue
+        public string Counter
+        {
+            get { return (string)GetValue(counterKey.DependencyProperty); }
+        }
+
+        //用RegisterReadOnly来代替Register来注册一个只读的依赖属性
+        private static readonly DependencyPropertyKey counterKey =
+            DependencyProperty.RegisterReadOnly("Counter",
+                                                typeof(string),
+                                                typeof(MainWindow),
+                                                new PropertyMetadata("hello2"));
+
     }
 }
